@@ -4,9 +4,9 @@ var connection = mysql.createConnection(
     {
       host     : 'localhost',
       user     : 'root',
-      password : 'root',
+      password : 'Ianbru32',
       database : 'museum',
-      port : '8889',
+      port : '3306',
     }
 );
  
@@ -14,13 +14,12 @@ connection.connect();
  
 var queryString = 'SELECT * FROM OBJECTS LEFT JOIN DISPLAY on OBJECTS.display_id = DISPLAY.id where simple_name OR description LIKE '; 
 
-
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 app.get('/', function(req, res){
-  res.sendFile('/Users/marioviti/serverTest/test1/index.html');
+  res.sendFile('C:\\Users\\Ben Stokes\\Documents\\Git\\LuckyStrings\\ServerData\\index.html');
 });
 
 io.on('connection', function(socket){
