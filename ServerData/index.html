@@ -20,6 +20,9 @@
     <ul id="messages"></ul>
     </div>
     <div id = "rightpanel">
+      <canvas id="map_panel">
+
+      </canvas>
     </div>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
@@ -28,9 +31,13 @@
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-
     var locations = new Array();
-    locations["Gallery 1"] = new Array (3,2);
+    locations["Gallery 1"] = new Array (30,22);
+    locations["Chinese Glass Gallery"] = new Array (100,80);
+    var canvas = document.getElementById('map_panel');
+    var context = canvas.getContext('2d');
+
+    context.beginPath();
     
     var socket = io();
     $('form').submit(function(){
@@ -42,8 +49,14 @@
      socket.on('chat message', function(msg){
       var temp = msg.split(": ")
     $('#messages').append($('<li>').text(msg)).append($('<li>').text(locations[temp[1]][0])).append($('<li>').text(locations[temp[1]][1]));
+      
+      context.rect(locations[temp[1]][0], locations[temp[1]][1], 20, 20);
+      context.fillStyle = 'yellow';
+      context.fill();
+      context.lineWidth = 7;
+      context.strokeStyle = 'black';
+      context.stroke();
     });
-
     </script>
 
   </body>
