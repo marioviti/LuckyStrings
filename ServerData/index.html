@@ -11,10 +11,13 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+      #leftpanel { width: 50%;} 
     </style>
   </head>
   <body>
+    <div id="leftpanel">
     <ul id="messages"></ul>
+    </div>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
@@ -22,6 +25,9 @@
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
+
+    var locations = new Array();
+    locations["Gallery 1"] = new Array (3,2);
     
     var socket = io();
     $('form').submit(function(){
@@ -31,8 +37,8 @@
     });
     
      socket.on('chat message', function(msg){
-      
-    $('#messages').append($('<li>').text(msg)).append($('<li>').text('HELLO'));
+      var temp = msg.split(": ")
+    $('#messages').append($('<li>').text(msg)).append($('<li>').text(locations[temp[1]][0])).append($('<li>').text(locations[temp[1]][1]));
     });
 
     </script>
