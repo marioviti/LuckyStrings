@@ -25,13 +25,10 @@ var queryString = 'SELECT * FROM OBJECTS LEFT JOIN DISPLAY on OBJECTS.display_id
 	    if (err) throw err;
 	 
 	    for (var i in rows) {
-	        
 	        message=message+rows[i].simple_name + ': '+rows[i].L2+'\n';
-
-	        //socket.emit('chat message', message);
-	        //console.log('object location: ', rows[i].L2);
 	    }
-	    console.log('object location: ', message);
+	    //console.log('object location: ', message);
+	   	socket.emit('chat message', message);
 
 	  });
 
