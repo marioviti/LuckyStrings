@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  
+  <div id="leftpanel">
+    
+	    <h1>{{ title }}</h1>
+		    <p>Welcome to {{ title }}</p>
+
+		    <form action="">
+				search:<br>
+				<input id="m" type="text" name="search" value="">
+
+				<input type="submit" value="Submit">
+			</form>
+	
+	</div>
+
+	<div id="rightpanel">
+      <div id="content">
+        <ul id="messages"></ul>
+      </div>
+  </div>
+
+	<script src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+    var socket = io();
+
+    $('form').submit(function(){
+      socket.emit('chat message', $('#m').val());
+      $('#m').val('');
+        return false;
+    });
+
+    socket.on('chat message', function(msg){
+
+      $('#messages').empty();
+
+      var rows = msg.split('\n');
+
+      for (var i in rows){
+
+      $('#messages').append($('<li>').text(rows[i]));
+
+      }
+
+    });
+
+    </script>
+
+  </body>
+
+</html>
