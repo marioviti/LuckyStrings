@@ -1,1 +1,9 @@
-body{padding:50px;font:14px "Lucida Grande",Helvetica,Arial,sans-serif}a{color:#00B7FF}#messages{list-style-type:none;margin:0;padding:0}#messages li{padding:5px 10px}#messages li:nth-child(odd){background:#eee}#rightpanel{width:50%;float:right}#leftpanel{width:50%;float:left}
+.logo{
+	height:auto; 
+	width:auto;
+	max-width:60px; 
+	max-height:60px;
+	padding: 3px;
+	margin-right: 30px;
+	border-radius:5px;
+}
