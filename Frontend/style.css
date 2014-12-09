@@ -1,0 +1,9 @@
+.logo{
+	height:auto; 
+	width:auto;
+	max-width:60px; 
+	max-height:60px;
+	padding: 3px;
+	margin-right: 30px;
+	border-radius:5px;
+}
