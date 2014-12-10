@@ -4890,11 +4890,12 @@ a.thumbnail.active {
 .list-group {
   padding-left: 0;
   margin-bottom: 20px;
+  height:100px;
 }
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 5px 15px;
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -5051,7 +5052,7 @@ a.list-group-item-danger.active:focus {
 }
 .list-group-item-heading {
   margin-top: 0;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 .list-group-item-text {
   margin-bottom: 0;
