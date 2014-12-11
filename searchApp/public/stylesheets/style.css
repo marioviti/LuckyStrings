@@ -12,3 +12,23 @@
 	height:400px;
 	overflow:auto;
 }
+
+#floorplan{
+	position:relative;
+	 left: 0; top: 0;
+}
+
+#floorplanimg{
+	position:relative;
+	top: 0; left: 0;
+}
+
+.tagImg{
+	position:absolute;
+	height:30px;
+	width:auto;
+}
+
+body{
+	overflow-x:hidden;
+}
