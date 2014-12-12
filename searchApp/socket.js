@@ -22,15 +22,15 @@ var queryString = 'SELECT * FROM OBJECTS LEFT JOIN DISPLAY on OBJECTS.display_id
 	    newquery=queryString+'\'%'+msg+'%\'';
 
 	    connection.query(newquery, function(err, rows, fields) {
-	    if (err) throw err;
-	 
-	    for (var i in rows) {
-	        message=message+rows[i].simple_name + '- '+rows[i].L2+'\n';
-	    }
-	    //console.log('object location: ', message);
-	   	socket.emit('chat message', message);
-
-	  });
+		    if (err) throw err;
+		 
+		    for (var i in rows) {
+		        message=message+rows[i].simple_name + '- '+rows[i].L2+'\n';
+		    }
+		    //console.log('object location: ', message);
+		    console.log('Server found: '+message);
+		   	socket.emit('chat message', message);
+	  	});
 
 	  });
 

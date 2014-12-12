@@ -97,7 +97,7 @@
                 +location
               +'</h4>'
               +'<p>'
-                +itemInformation
+                +itemInformation+'---'+rows.length+'---'+i;
               +'</p>'
             +'</a>';
           $("#messages").append(listAppended);
