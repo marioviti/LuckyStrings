@@ -73,6 +73,9 @@
       var roomLocations = new Array();
       roomLocations["Glass Gallery"] = new Array(750,250);
       roomLocations["Geology Gallery"] = new Array(375,250);
+      roomLocations["Eastern Art Gallery"] = new Array(805,110);
+      roomLocations["World Wildlife Gallery"] = new Array(370,110);
+      
 
       $('form').submit(function(){
         socket.emit('chat message', $('#m').val());
@@ -101,6 +104,7 @@
               +'</p>'
             +'</a>';
           $("#messages").append(listAppended);
+          if(itemCoords!=null)
           $("#floorplanTags").append('<img src="img/tag.png" class="tagImg grow" style="top: '+itemCoords[1]+'px; left: '+itemCoords[0]+'px;">');
           // $("#floorplan").append()
         }
