@@ -7,6 +7,7 @@
     <title>Museum Search</title>
     <link href="/stylesheets/style.css" rel ="stylesheet">
     <link href="/stylesheets/hoveranimations.css" rel ="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/animate.css">
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
 
@@ -24,7 +25,7 @@
 
         <div class="collapse navbar-collapse navHeaderCollapse">
           <ul class ="nav navbar-nav navbar-left">
-                    <li><img class = "logo bubble-float-b" src="img/museumlogo.jpg"></li>
+                    <li><img class = "logo" src="img/museumlogo.jpg"></li>
             <li class="active"><a href ="#">Home</a></li>
             <li><a href ="#">Report an issue</a></li>
             <li><a href ="#">About</a></li>
@@ -71,10 +72,19 @@
     <script>
       var socket = io();
       var roomLocations = new Array();
-      roomLocations["Glass Gallery"] = new Array(750,250);
+      roomLocations["Glass Gallery"] = new Array(752,235);
       roomLocations["Geology Gallery"] = new Array(375,250);
       roomLocations["Eastern Art Gallery"] = new Array(805,110);
       roomLocations["World Wildlife Gallery"] = new Array(370,110);
+      roomLocations["Wills (Rear) Hall"] = new Array(153,155);
+      roomLocations["British Wildlife Gallery"]= new Array(535,220);
+      roomLocations["Egypt Gallery"]= new Array(250,370);
+      roomLocations["Ground Floor Lift Foyer"] = new Array(100,420);
+      roomLocations["Curiosity"] = new Array(250,140);
+      roomLocations["Winterstoke (Front) Hall"] = new Array(150,340);
+      roomLocations["Chinese Glass Gallery"] = new Array(688,120);
+      roomLocations["Sea Dragons Gallery"] = new Array(153,225);
+      roomLocations["South West Wildlife Gallery"] = new Array(50,380);
       
 
       $('form').submit(function(){
@@ -100,13 +110,13 @@
                 +location
               +'</h4>'
               +'<p>'
-                +itemInformation+'---'+rows.length+'---'+i;
+                +itemInformation;
               +'</p>'
             +'</a>';
           $("#messages").append(listAppended);
-          if(itemCoords!=null)
-          $("#floorplanTags").append('<img src="img/tag.png" class="tagImg grow" style="top: '+itemCoords[1]+'px; left: '+itemCoords[0]+'px;">');
-          // $("#floorplan").append()
+          if(itemCoords!=null){
+            $("#floorplanTags").append('<img src="img/tag.png" class="tagImg animated bounceInDown" style="top: '+itemCoords[1]+'px; left: '+itemCoords[0]+'px;">');
+          }
         }
       });
     </script>
