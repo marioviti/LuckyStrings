@@ -3,13 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <title>Museum Search</title>
     <link href="/stylesheets/style.css" rel ="stylesheet">
     <link href="/stylesheets/hoveranimations.css" rel ="stylesheet">
     <link rel="stylesheet" href="/stylesheets/animate.css">
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Maplic -->
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/map.css">
+    <link rel="stylesheet" type="text/css" href="mapplic/mapplic.css">
 
   </head>
   <body>
@@ -34,7 +40,7 @@
         </div>
     </div>
 
-    <div class = "container">
+<!--     <div class = "container">
         <div class ="sideBar col-sm-3">
             <div class = "navbar">
                 <div class = "container">
@@ -45,15 +51,16 @@
             </div>
 
             <div id= "messages" class = "list-group">
-              <!-- This is where results will get added -->
+              
             </div>
-        </div>
-        <div class ="col-sm-9" id="floorplan">               
+        </div> -->
+<!--         <div class ="col-sm-9" id="floorplan">               
               <img src="img/floorplansm.gif" alt="floorplan" id="floorplanimg">
               <div  id="floorplanTags">
-                <!--Tags are added here-->
+                
               </div>
-        </div>
+        </div> -->
+        <div id="mapplic"></div>
     </div>
 
     <div class="navbar navbar-default navbar-fixed-bottom">
@@ -78,5 +85,21 @@
     <script src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script src = "/js/index.js"></script>
+
+    <!-- Mapplic -->
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/hammer.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="js/smoothscroll.js"></script>
+    <script type="text/javascript" src="mapplic/mapplic.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('#mapplic').mapplic({
+        source: 'museum.json',
+        height: 420
+      });
+    });
+    </script>
   </body>
 </html>
