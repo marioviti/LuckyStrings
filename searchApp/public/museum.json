@@ -9,7 +9,7 @@
 			"name": "First Floor",
 			"title": "First Floor",
 			"map": "img/floor1.svg",
-			"minimap": "img/europe-mini.jpg",
+			"minimap": "img/floor1mini.jpg",
 			"locations": [
 				{
 					"id": "Cafe",
