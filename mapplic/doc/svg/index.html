@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mapplic SVG Map - Tutorial</title>
+	
+	<link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="wrap">
+
+		<header id="header">
+			<div class="inner">
+				<h2 class="right">SVG Map Tutorial</h2>
+				<a id="logo" href="http://www.mapplic.com" target="_blank"></a>
+			</div>
+		</header>
+
+		<div id="content">
+			<section>
+				<div class="inner">
+					<h1>Introduction</h1>
+					<hr>
+					<p>Mapplic is a jQuery plugin for creating custom interactive maps using simple images or vector graphics. It is based on techniques developed exclusively for Mapplic using the latest technologies, like Scalable Vector Graphics (SVG). Understanding how SVGs work often caused problems to our customers so we came up with a solution.</p>
+					<h2>New technique</h2>
+					<p>Mapplic 3.0 introduces a new generation of maps. These maps can be created by anyone, without knowing anything about SVGs or coding. The old map format is still going to be supported, but we highly advise to use this method for creating maps. In this tutorial we will walk you through the simple steps of creating a vector map with clickable areas.</p>
+				</div>
+			</section>
+
+			<section>
+				<div class="inner">
+					<h1>Walkthrough</h1>
+					<iframe src="https://www.screenr.com/embed/ZstN" width="650" height="396" frameborder="0"></iframe>
+					<p>The above video is a walkthrough of creating a simple SVG maps with interactive elements. In the next section each step is explained in detail.</p>
+				</div>
+			</section>
+
+			<section>
+				<div class="inner">
+					<h1>Creating the Map</h1>
+					<hr>
+					<p>We are using Adobe Illustrator CC, however older version of Illustrator can be used as well. Inkscape is a free alternative for creating vector graphics, but it requires different steps and due to its popularity, we are focusing on Adobe Illustrator in this tutorial.</p>
+					<div>
+						<h2><span>1</span> Creating New Document</h2>
+						<p>Open Illustrator and create a New Document. Give your document a name, make sure the Units are set to Pixels and choose the desired dimensions (width and height).</p>
+						<img src="img/new-document.png" alt="New Document">
+						<p>Press OK, and an empty white canvas will appear.</p>
+					</div>
+					<div>
+						<h2><span>2</span> Drawing the map</h2>
+						<p>The next step would be the actual drawing of the map. You can always add or edit content, so if it's your first time creating a map experiment with a few simple shapes, you can add complex drawings later.</p>
+						<p>The correct grouping of the SVG elements is really important, it is used by the plugin to identify elements with different behavior (for example the interactive elements of the map). For creating groups and naming elements use the Layers tool (F7).</p>
+						<img src="img/svg-grouping.png" alt="SVG Grouping">
+
+						<h3>Common elements (environment)</h3>
+						<p>The first type is the common elements. These will be the elements on the map without interactivity. You are free to draw all kinds of shapes or add images without any naming or grouping conventions. In general the environment is non interactive so we're using common elements. On the walkthrough video this would be the <i>base</i>.</p>
+
+						<h3>Interactive elements (landmarks)</h3>
+						<p>We will refer to the interactive elements of the map as "landmarks". Every named, direct child of a group with a name starting with <i>landmarks</i> is considered a landmark. So create interactive elements as follows.</p>
+						<ol>
+							<li>
+								<p>Create a new group. The name of the group MUST start with "landmarks" and shouldn't contain spaces.</p>
+								<p>Correct: <i>landmarks-test</i>, <i>landmarks-deparment-shops</i>, <i>landmarks-lots</i></p>
+								<p>Incorrect: <i class="stirke">landmark</i>, <i class="stirke">test_landmarks</i>, <i class="stirke">lndmarklots</i></p>
+							</li>
+							<li>
+								<p>Select the shapes you want to make interactive and move them into the new group. They must be on the first level of the created group, make sure there are no nested groups.</p>
+							</li>
+							<li>
+								<p>Name each landmark with a unique identifier. The names cannot contain spaces! When you will be adding your landmark in your .json data file, you will have to use the same ID for the landmark. The landmark data and the SVG shape are connected through this ID so make sure it's UNIQUE!</p>
+							</li>
+						</ol>
+
+						<h3>Nopointer elements (logos/captions)</h3>
+						<p>Sometimes an overlaying element might block the interactivity, for example logos or captions over a landmark. This is where nopointer elements come in. If an element's or is parents (direct or indirect) name starts with <i>nopointer</i>, it will be ignored by the mouse pointer.</p>
+					</div>
+					<div>
+						<h2><span>3</span> Saving the Map</h2>
+						<p>To save your map as .svg, use the <i>File > Save AS</i> option, select the type SVG (*.SVG).</p>
+						<img src="img/save-document.png" alt="Save Document">
+						<p class="nomargin">It is advised to:</p>
+						<ul>
+							<li><p>set at least 2 for the decimal places</p></li>
+							<li><p>link images (if there is any) instad of embedding</p></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<div class="inner">
+					<h1>Conclusion</h1>
+					<p>With some basic Illustrator skills, anyone can create an Mapplic compatible interactive vector map within minutes. If you have any further questions please get in touch using this <a href="http://codecanyon.net/user/sekler?ref=sekler#contact">contact form</a>.</p>
+				</div>
+			</section>
+		</div>
+
+		<footer id="footer">
+			<div class="inner">
+				<p>Copyright &copy; 2015 <a href="http://codecanyon.net/user/sekler?ref=sekler"><b>sekler</b></a>. All rights reserved.</p>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>

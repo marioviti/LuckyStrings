@@ -1,0 +1,49 @@
+{
+	"mapwidth":"690",
+	"mapheight":"982",
+	"categories":[
+
+	],
+	"levels":[
+		{
+			"id":"world",
+			"title":"World",
+			"map":"images/maps/england.svg",
+			"minimap": "images/maps/france-mini.jpg",
+			"locations":[
+				{
+					"id": "manchester",
+					"title": "Manchester",
+					"description": "<p>Donec et pretium justo</p>",
+					"pin": "circular",
+					"x": "0.5698",
+					"y": "0.6071"
+				},
+				{
+					"id": "north-west",
+					"title": "North West",
+					"description": "It is the third most populated region after the South East and Greater London.",
+					"pin": "hidden",
+					"x": "0.5395",
+					"y": "0.5249"
+				},
+				{
+					"id": "london",
+					"title": "Greater London",
+					"description": "<p>London is divided into the small City of London and the much wider Greater London.</p>",
+					"pin": "hidden",
+					"x": "0.7933",
+					"y": "0.8181"
+				},
+				{
+					"id": "south-east",
+					"title": "South East",
+					"description": "<p>Lorem ipsum.</p>",
+					"pin": "hidden",
+					"x": "0.7282",
+					"y": "0.8297"
+				}
+			]
+		}
+	]
+}

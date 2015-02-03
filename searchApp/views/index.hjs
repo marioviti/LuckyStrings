@@ -25,7 +25,7 @@
 
         <div class="collapse navbar-collapse navHeaderCollapse">
           <ul class ="nav navbar-nav navbar-left">
-            <li><img src="img/museumlogo.jpg" class ="logo"></li>
+            <li><img src="img/museumlogo.jpg" class ="logo" data-toggle="popover" tabindex="50" data-placement="right"></li>
             <li class="active"><a href ="#">Home</a></li>
             <li><a href ="#">Report an issue</a></li>
             <li><a href ="#">About</a></li>
@@ -62,11 +62,19 @@
       </div>
     </div>
 
+    <ul id="ToolMenu" style="" class="hide">
+    <li onclick="showBroadcastModal()"><span style="">Broadcast</span></li>
+    <li><a data-url='@Url.Action("ExportToExcel")' onclick="toolboxExport($(this))"><span style="">Export</span></a></li>
+    <li id="toolMenu_Snapshot" style="" onclick="showSnapshotModal()"><span style="">Snapshot</span></li>
+    <li id="toolMenu_Slips" style="" onclick="showSlipModal()"><span style="">Slips</span></li>
+    <li id="toolMenu_Roster" style="" onclick="showRosterModal()"><span style="">Roster</span></li>
+    <li id="toolMenu_Delete" style="" onclick="deleteAssignment()"><span style="">Delete</span></li>
+    </ul>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.min.js"></script>
-
     <script src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script src = "/js/index.js"></script>
