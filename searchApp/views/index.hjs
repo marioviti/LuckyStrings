@@ -13,7 +13,6 @@
 
     <!-- Maplic -->
     <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/map.css">
     <link rel="stylesheet" type="text/css" href="mapplic/mapplic.css">
 
@@ -83,7 +82,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.min.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script src = "/js/index.js"></script>
 
     <!-- Mapplic -->
@@ -97,7 +95,8 @@
     $(document).ready(function() {
       $('#mapplic').mapplic({
         source: 'museum.json',
-        height: 420
+        height: 520,
+        fullscreen:true
       });
     });
     </script>
