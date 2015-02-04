@@ -23,12 +23,9 @@ router.get('/form', function(req, res) {
 	queryDb(urlObj.query.search,connection,function(data,err){
 
 			console.log(data);
-			res.json(data);
+			res.render('index', { title: 'searchMuseum' });
 
-		});
-  	}
-
-  	res.render('index', { title: 'searchMuseum' });
+	});
 
 });
 
