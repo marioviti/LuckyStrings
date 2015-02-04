@@ -20,14 +20,15 @@ router.get('/form', function(req, res) {
 
 	var json = urlObj.query;
 
-	res.render('index', { title: 'searchMuseum' });
-
 	
 	queryDb(urlObj.query.search,connection,function(data,err){
 
 			console.log(data);
 
 	});
+
+	res.render('index', { title: 'searchMuseum' });
+
 
 });
 
