@@ -10,4 +10,7 @@ var connection = mysql.createConnection(
     }
 );
 
+//if conn refused try
+//8809 , 8889 , 3306
+
 module.exports = connection;
