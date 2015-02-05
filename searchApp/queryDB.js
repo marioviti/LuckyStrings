@@ -45,6 +45,25 @@ var floor3Obj={"id":"3","name":"Second Floor","title":"Second Floor",
 var mapplicObj={"mapwidth":"800","mapheight":"600","categories":[
   ],"levels":[]};
 
+var category0Obj={    
+      "id": "0",
+      "title": "Ground Floor",
+      "color": "#646da8",
+      "show": "false"
+    };
+var category1Obj={    
+      "id": "1",
+      "title": "First Floor",
+      "color": "#64ad5c",
+      "show": "false"
+    };
+var category2Obj={    
+      "id": "2",
+      "title": "Second Floor",
+      "color": "#653333",
+      "show": "false"
+    };
+
 function cloneJsonObj(data){
 
   var string = JSON.stringify(data);
@@ -58,11 +77,15 @@ function populateJson(rows){
   var floor1 = cloneJsonObj(floor1Obj);
   var floor2 = cloneJsonObj(floor2Obj);
   var floor3 = cloneJsonObj(floor3Obj);
+  var category0 = cloneJsonObj(category0Obj);
+  var category1 = cloneJsonObj(category1Obj);
+  var category2 = cloneJsonObj(category2Obj);
 
   var mapplic = cloneJsonObj(mapplicObj);
 
   //populates the levels of the main object
   mapplic.levels = [floor1,floor2,floor3];
+  mapplic.categories = [category0,category1,category2];
   for(var idx in rows){
     if (rows.hasOwnProperty(idx))
     {
@@ -71,6 +94,7 @@ function populateJson(rows){
 
         rows[idx].x = roomLocations[rows[idx].l2][0];
         rows[idx].y = roomLocations[rows[idx].l2][1];
+        rows[idx].category = roomLocations[rows[idx].l2][2];
         rows[idx].about = "";
         delete rows[idx].l2;
         mapplic.levels[itemLocation[2]].locations.push(rows[idx]);

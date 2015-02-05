@@ -474,9 +474,8 @@
 				// // Show not-found text
 				// if ($('.mapplic-list > li.mapplic-list-shown').length > 0) this.notfound.fadeOut(200);
 				// else this.notfound.fadeIn(200);
-				 document.getElementById("content").innerHTML = response.html;
-				 document.title = response.pageTitle;
-				 window.history.pushState({"html":response.html,"pageTitle":response.pageTitle},"", urlPath);
+
+				//window.history.pushState(null, null, 'form?search=' + keyword);
 
 			}
 		}
