@@ -96,7 +96,8 @@
       $('#mapplic').mapplic({
         source: 'museum.json',
         height: 520,
-        fullscreen:true
+        fullscreen:true,
+        animate:true
       });
     });
     </script>

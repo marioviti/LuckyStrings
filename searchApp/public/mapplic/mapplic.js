@@ -27,7 +27,6 @@
 			maxscale: 4,
 			zoom: true
 		};
-
 		self.init = function(el, params) {
 			// Extend options
 			self.o = $.extend(self.o, params);

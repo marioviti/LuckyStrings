@@ -11,7 +11,7 @@
 			"locations": [
 				{
 					"id": "Cafe",
-					"title": "Cafe",
+					"title": "",
 					"about": "The best place to spend the afternoon",
 					"description": "<p>This is an awesome coffee table.<p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean viverra laoreet imperdiet. Praesent viverra, enim at malesuada dignissim, ante purus vestibulum turpis, nec molestie ipsum mauris non risus. In hac habitasse platea dictumst. Integer porta dignissim magna, at sollicitudin neque aliquam eget. Pellentesque dapibus, augue eu ornare mattis, est mauris volutpat ligula, ac ornare turpis turpis sit amet elit.</p>",
 					"x": "0.5975",
