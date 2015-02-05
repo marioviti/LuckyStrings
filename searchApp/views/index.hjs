@@ -82,7 +82,7 @@
     <script type="text/javascript">
     $(document).ready(function() {
       $('#mapplic').mapplic({
-        source: 'museum.json',
+        source: 'objects.json',
         height: 520,
         fullscreen:true,
         animate:true,

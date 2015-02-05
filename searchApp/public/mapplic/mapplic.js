@@ -453,27 +453,31 @@
 			}
 
 			this.search = function(keyword) {
-				if (keyword) self.clear.fadeIn(100);
-				else self.clear.fadeOut(100);
+				// if (keyword) self.clear.fadeIn(100);
+				// else self.clear.fadeOut(100);
 
-				$('.mapplic-list li', self.el).each(function() {
-					if ($(this).text().search(new RegExp(keyword, "i")) < 0) {
-						$(this).removeClass('mapplic-list-shown');
-						$(this).slideUp(200);
-					} else {
-						$(this).addClass('mapplic-list-shown');
-						$(this).show();
-					}
-				});
+				// $('.mapplic-list li', self.el).each(function() {
+				// 	if ($(this).text().search(new RegExp(keyword, "i")) < 0) {
+				// 		$(this).removeClass('mapplic-list-shown');
+				// 		$(this).slideUp(200);
+				// 	} else {
+				// 		$(this).addClass('mapplic-list-shown');
+				// 		$(this).show();
+				// 	}
+				// });
 
-				$('.mapplic-list > li', self.el).each(function() {
-					var count = $('.mapplic-list-shown', this).length;
-					$('.mapplic-list-count', this).text(count);
-				});
+				// $('.mapplic-list > li', self.el).each(function() {
+				// 	var count = $('.mapplic-list-shown', this).length;
+				// 	$('.mapplic-list-count', this).text(count);
+				// });
 
-				// Show not-found text
-				if ($('.mapplic-list > li.mapplic-list-shown').length > 0) this.notfound.fadeOut(200);
-				else this.notfound.fadeIn(200);
+				// // Show not-found text
+				// if ($('.mapplic-list > li.mapplic-list-shown').length > 0) this.notfound.fadeOut(200);
+				// else this.notfound.fadeIn(200);
+				 document.getElementById("content").innerHTML = response.html;
+				 document.title = response.pageTitle;
+				 window.history.pushState({"html":response.html,"pageTitle":response.pageTitle},"", urlPath);
+
 			}
 		}
 

@@ -3,12 +3,13 @@ var connection = require('../connection.js');
 var router = express.Router();
 var queryDb = require('../queryDB.js');
 var url = require('url');
+var fs = require('fs');
 
 connection.connect();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-
+	//display homepage
   	res.render('index', { title: 'searchMuseum' });
 
 });
@@ -19,11 +20,11 @@ router.get('/form', function(req, res) {
 	var urlObj=url.parse(req.url,true);
 
 	var json = urlObj.query;
+	console.log(urlObj.query.search);
 
 
 	queryDb(urlObj.query.search,connection,function(data,err){
-
-			//console.log(data);
+			fs.writeFileSync('../public/objects.json', JSON.stringify(data));
 
 	});
 
