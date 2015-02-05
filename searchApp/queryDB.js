@@ -62,18 +62,18 @@ function populateJson(rows){
     if (rows.hasOwnProperty(idx))
     {
       var itemLocation = roomLocations[rows[idx].l2];
-      console.log(itemLocation);
+      //console.log(itemLocation);
       if(itemLocation!=null){
 
         rows[idx].x = roomLocations[rows[idx].l2][0];
         rows[idx].y = roomLocations[rows[idx].l2][1];
-        floors[roomLocations[rows[idx].l2][2]].locations.push(rows[idx]);
+        mapplic.levels[roomLocations[rows[idx].l2][2]].locations.push(rows[idx]);
 
         console.log(rows[idx]);
       }
     }
   }
-  console.log(mapplic);
+  console.log(JSON.stringify(mapplic));
 }
 
 
