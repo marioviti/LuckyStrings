@@ -6,8 +6,11 @@ var connection = mysql.createConnection(
       user     : 'root',
       password : 'root',
       database : 'museum',
-      port : 3306
+      port : 8889
     }
 );
- 
+
+//if conn refused try
+//8809 , 8889 , 3306
+
 module.exports = connection;
