@@ -20,10 +20,10 @@ router.get('/form', function(req, res) {
 
 	var json = urlObj.query;
 
-	
+
 	queryDb(urlObj.query.search,connection,function(data,err){
 
-			console.log(data);
+			//console.log(data);
 
 	});
 
