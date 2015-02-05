@@ -67,8 +67,9 @@ function populateJson(rows){
 
         rows[idx].x = roomLocations[rows[idx].l2][0];
         rows[idx].y = roomLocations[rows[idx].l2][1];
-        mapplic.levels[roomLocations[rows[idx].l2][2]].locations.push(rows[idx]);
-
+        rows[idx].about = "";
+        delete rows[idx].l2;
+        mapplic.levels[itemLocation[2]].locations.push(rows[idx]);
         console.log(rows[idx]);
       }
     }
