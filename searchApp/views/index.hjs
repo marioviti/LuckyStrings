@@ -85,8 +85,7 @@
         source: 'objects.json',
         height: 520,
         fullscreen:true,
-        animate:true,
-        developer:true
+        animate:true
       });
     });
     </script>

@@ -26,15 +26,13 @@ router.get('/form', function(req, res) {
 
 	if(req.xhr)
 	{
-		queryDb(urlObj.query.search,connection,function(data,err){
-			
+		queryDb(urlObj.query.search,connection,function(data,err){			
 			//VALIDATE JSON
 			var string = JSON.stringify(data);
 			var copy = JSON.parse(string);
 			
 			fs.writeFileSync('../public/objects.json', JSON.stringify(copy));
-			res.json(copy);
-			
+			res.json(copy);			
 		});
 	}
 	else{

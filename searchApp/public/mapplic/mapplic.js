@@ -650,7 +650,8 @@
 
 		var clearData = function() {
 		
-			//self.empty();
+			self.el.empty();
+			self.map.empty();
 
 		};
 
