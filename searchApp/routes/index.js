@@ -21,6 +21,7 @@ router.get('/form', function(req, res) {
 
 	var json = urlObj.query;
 	console.log(urlObj.query.search);
+	console.log("SEARCHING");
 
 
 	queryDb(urlObj.query.search,connection,function(data,err){

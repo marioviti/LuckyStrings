@@ -1,10 +1,13 @@
-
+body{
+	overflow-x:hidden;
+	font-family: 'Maven Pro';
+}
 
 .logo{
 	height:auto; 
 	width:auto;
-	max-width:60px; 
-	max-height:60px;
+	max-width:50px; 
+	max-height:50px;
 	padding: 3px;
 	margin-right: 30px;
 	border-radius:5px;
@@ -31,6 +34,11 @@
 	width:auto;
 }
 
+#logoimg{
+	margin:0;
+	padding:0;
+}
+
 .grow {
   display: inline-block;
   -webkit-transition-duration: 0.3s;
@@ -48,11 +56,6 @@
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
-}
-
-body{
-	overflow-x:hidden;
-	font-family: 'Maven Pro';
 }
 
 .navbar{

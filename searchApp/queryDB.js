@@ -108,9 +108,10 @@ function populateJson(rows){
 
 var queryDB = function (msg, conn, callback)
 {
-	newquery=newquery+'\'%'+msg+'%\''+order;
 
-	conn.query( newquery, function(err, rows, fields) {
+	var localquery=newquery+'\'%'+msg+'%\''+order;
+  console.log("Query: "+localquery);
+	conn.query( localquery, function(err, rows, fields) {
 
 	    if (err) callback(null,err);
       var mapplicdata = populateJson(rows);

@@ -475,7 +475,7 @@
 				// if ($('.mapplic-list > li.mapplic-list-shown').length > 0) this.notfound.fadeOut(200);
 				// else this.notfound.fadeIn(200);
 
-				//window.history.pushState(null, null, 'form?search=' + keyword);
+				window.history.pushState(null, null, 'form?search=' + keyword);
 
 			}
 		}

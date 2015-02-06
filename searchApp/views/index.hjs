@@ -4,17 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="http://www.bristolmuseums.org.uk/wp-content/themes/bristol-museums/assets/img/favico/favicon.png" type="image/x-icon"/>
     <title>Museum Search</title>
-    <link href="/stylesheets/style.css" rel ="stylesheet">
     <link href="/stylesheets/hoveranimations.css" rel ="stylesheet">
     <link rel="stylesheet" href="/stylesheets/animate.css">
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
-
     <!-- Maplic -->
     <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/map.css">
     <link rel="stylesheet" type="text/css" href="mapplic/mapplic.css">
+            <link href="/stylesheets/style.css" rel ="stylesheet">
+
 
   </head>
   <body>
@@ -29,7 +30,7 @@
 
         <div class="collapse navbar-collapse navHeaderCollapse">
           <ul class ="nav navbar-nav navbar-left">
-            <li><img src="img/museumlogo.jpg" class ="logo" data-toggle="popover" tabindex="50" data-placement="right"></li>
+            <li><a id="logoimg" href="http://www.bristolmuseums.org.uk/bristol-museum-and-art-gallery/"><img src="img/museumlogo.jpg" class ="logo" data-toggle="popover" tabindex="50" data-placement="right"></a></li>
             <li class="active"><a href ="#">Home</a></li>
             <li><a href ="#">Report an issue</a></li>
             <li><a href ="#">About</a></li>
