@@ -5,6 +5,9 @@
 
 (function($) {
 
+	// MAKE INSTANCE REACHABLE IN FILE FOR UPDATE
+	var GLOBALinstance;
+
 	var Mapplic = function() {
 		var self = this;
 
@@ -27,6 +30,19 @@
 			maxscale: 4,
 			zoom: true
 		};
+
+		
+
+		var processJson= function(data)
+		{
+			processData(data);
+				self.el.removeClass('mapplic-loading');
+
+				// Controls
+				if (self.o.zoom) addControls();
+
+		};
+
 		self.init = function(el, params) {
 			// Extend options
 			self.o = $.extend(self.o, params);
@@ -38,14 +54,7 @@
 			self.el = el.addClass('mapplic-element mapplic-loading').height(self.o.height);
 
 			// Process JSON file
-			$.getJSON(self.o.source, function(data) { // Success
-				processData(data);
-				self.el.removeClass('mapplic-loading');
-
-				// Controls
-				if (self.o.zoom) addControls();
-
-			}).fail(function() { // Failure: couldn't load JSON file, or it is invalid.
+			$.getJSON(self.o.source, processJson).fail(function() { // Failure: couldn't load JSON file, or it is invalid.
 				console.error('Couldn\'t load map data. (Make sure you are running the script through a server and not just opening the html file with your browser)');
 				alert('Data file missing or invalid!');
 			});
@@ -386,17 +395,33 @@
 				this.el = $('<div></div>').addClass('mapplic-sidebar').appendTo(self.el);
 
 				if (self.o.search) {
-					var form = $('<form></form>').addClass('mapplic-search-form').submit(function() {
+					var form = $('<form></form>').addClass('mapplic-search-form').submit(function(e) {
+						
+						e.preventDefault();
 						return false;
+
 					}).appendTo(this.el);
-					self.clear = $('<button></button>').addClass('mapplic-search-clear').click(function() {
-						input.val('');
-						input.keyup();
-					}).appendTo(form);
-					var input = $('<input>').attr({'type': 'text', 'spellcheck': 'false', 'placeholder': 'Search...'}).addClass('mapplic-search-input').keyup(function() {
+
+					var input = $('<input>').attr({'type': 'text', 'spellcheck': 'false', 'placeholder': 'Search...'}).addClass('mapplic-search-input').keyup(function(e) {
+
 						var keyword = $(this).val();
-						s.search(keyword);
+						if (e.keyCode == 13) 
+						{
+							console.log(keyword);
+						 	s.searchQuery(keyword);
+						 	
+						}
+						else
+						{
+						    s.search(keyword);
+						}
+						
 					}).prependTo(form);
+
+					self.clear = $('<button></button>').addClass('mapplic-search-clear').click(function(e) {
+						//input.val('');
+						//input.keyup();
+					}).appendTo(form);
 				}
 
 				var listContainer = $('<div></div>').addClass('mapplic-list-container').appendTo(this.el);
@@ -452,30 +477,51 @@
 				$('.mapplic-list-count', category).text($('.mapplic-list-shown', category).length);
 			}
 
+			this.searchQuery = function(keyword) {
+				
+				var ajaxurl = "/form";
+
+				globalQueryStrig="";
+
+      			history.pushState(null, null, ajaxurl+"?search="+ keyword );
+
+      			var parameters = { search: keyword };
+
+      			$.get( ajaxurl ,parameters, function(data) {
+          
+          			console.log(data);
+          			clearData();
+          			processData(data);
+				    
+        		});
+
+			}
+
 			this.search = function(keyword) {
-				// if (keyword) self.clear.fadeIn(100);
-				// else self.clear.fadeOut(100);
 
-				// $('.mapplic-list li', self.el).each(function() {
-				// 	if ($(this).text().search(new RegExp(keyword, "i")) < 0) {
-				// 		$(this).removeClass('mapplic-list-shown');
-				// 		$(this).slideUp(200);
-				// 	} else {
-				// 		$(this).addClass('mapplic-list-shown');
-				// 		$(this).show();
-				// 	}
-				// });
+				if (keyword) self.clear.fadeIn(100);
+				else self.clear.fadeOut(100);
 
-				// $('.mapplic-list > li', self.el).each(function() {
-				// 	var count = $('.mapplic-list-shown', this).length;
-				// 	$('.mapplic-list-count', this).text(count);
-				// });
+				$('.mapplic-list li', self.el).each(function() {
+				if ($(this).text().search(new RegExp(keyword, "i")) < 0) {
+						$(this).removeClass('mapplic-list-shown');
+				 		$(this).slideUp(200);
+				 	} else {
+				 		$(this).addClass('mapplic-list-shown');
+				 		$(this).show();
+				 	}
+				 });
 
-				// // Show not-found text
-				// if ($('.mapplic-list > li.mapplic-list-shown').length > 0) this.notfound.fadeOut(200);
-				// else this.notfound.fadeIn(200);
+				 $('.mapplic-list > li', self.el).each(function() {
+				 	var count = $('.mapplic-list-shown', this).length;
+				 	$('.mapplic-list-count', this).text(count);
+				 });
 
-				window.history.pushState(null, null, 'form?search=' + keyword);
+				 // Show not-found text
+				 if ($('.mapplic-list > li.mapplic-list-shown').length > 0) this.notfound.fadeOut(200);
+				 else this.notfound.fadeIn(200);
+
+				//window.history.pushState(null, null, 'form?search=' + keyword);
 
 			}
 		}
@@ -601,6 +647,13 @@
 		}
 
 		// Functions
+
+		var clearData = function() {
+		
+			//self.empty();
+
+		};
+
 		var processData = function(data) {
 			self.data = data;
 			var nrlevels = 0;
@@ -1154,9 +1207,9 @@
 		var len = this.length;
 
 		return this.each(function(index) {
-			var me = $(this),
-				key = 'mapplic' + (len > 1 ? '-' + ++index : ''),
-				instance = (new Mapplic).init(me, params);
+			var me = $(this);
+			var	key = 'mapplic' + (len > 1 ? '-' + ++index : '');
+			GLOBALinstance = (new Mapplic).init(me, params);
 		});
 	};
 })(jQuery);

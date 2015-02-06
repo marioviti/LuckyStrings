@@ -10,26 +10,42 @@ connection.connect();
 /* GET home page. */
 router.get('/', function(req, res) {
 	//display homepage
+
+	var urlObj=url.parse(req.url,true);
+
   	res.render('index', { title: 'searchMuseum' });
 
 });
 
-/* GET home page. */
 router.get('/form', function(req, res) {
 
 	var urlObj=url.parse(req.url,true);
 
 	var json = urlObj.query;
 	console.log(urlObj.query.search);
-	console.log("SEARCHING");
 
+	if(req.xhr)
+	{
+		queryDb(urlObj.query.search,connection,function(data,err){
+			
+			//VALIDATE JSON
+			var string = JSON.stringify(data);
+			var copy = JSON.parse(string);
+			
+			fs.writeFileSync('../public/objects.json', JSON.stringify(copy));
+			res.json(copy);
+			
+		});
+	}
+	else{
 
-	queryDb(urlObj.query.search,connection,function(data,err){
-			fs.writeFileSync('../public/objects.json', JSON.stringify(data));
+		queryDb(urlObj.query.search,connection,function(data,err){
+				fs.writeFileSync('../public/objects.json', JSON.stringify(data));
 
-	});
+		});
 
-	res.render('index', { title: 'searchMuseum' });
+		res.render('index', { title: 'searchMuseum' });
+	}
 
 
 });

@@ -25,7 +25,7 @@ roomLocations["Egypt Gallery"]= new Array(0.6425,0.6767,0);
 roomLocations["Ground Floor Lift Foyer"] = new Array(0.4500,0.7817,0);
 roomLocations["Curiosity"] = new Array(0.6925,0.3183,0);
 roomLocations["Winterstoke (Front) Hall"] = new Array(0.4800,0.6017,0);
-roomLocations["Chinese Glass Gallery"] = new Array(0.4113,0.2117,2);
+roomLocations["Chinese Glass Gallery"] = new Array(0.4113,0.2205,2);
 roomLocations["Sea Dragons Gallery"] = new Array(0.5038,0.4550,0);
 roomLocations["South West Wildlife Gallery"] = new Array(0.3050,0.6433,0);
 
@@ -73,6 +73,22 @@ function cloneJsonObj(data){
 
 function populateJson(rows){
 
+  var spc = 0.013; //spacing- modify if you want to change space of pins
+  var scatterLocations = new Array();
+    scatterLocations["Glass Gallery"] = new Array(-spc,-spc);
+    scatterLocations["Geology Gallery"] = new Array(-spc,-spc);
+    scatterLocations["Eastern Art Gallery"] = new Array(-spc,-spc);
+    scatterLocations["World Wildlife Gallery"] = new Array(-spc,-spc);
+    scatterLocations["Wills (Rear) Hall"] = new Array(-spc,-spc);
+    scatterLocations["British Wildlife Gallery"]= new Array(-spc,-spc);
+    scatterLocations["Egypt Gallery"]= new Array(-spc,-spc);
+    scatterLocations["Ground Floor Lift Foyer"] = new Array(-spc,-spc);
+    scatterLocations["Curiosity"] = new Array(-spc,-spc);
+    scatterLocations["Winterstoke (Front) Hall"] = new Array(-spc,-spc);
+    scatterLocations["Chinese Glass Gallery"] = new Array(-spc,-spc);
+    scatterLocations["Sea Dragons Gallery"] = new Array(-spc,-spc);
+    scatterLocations["South West Wildlife Gallery"] = new Array(-spc,-spc);
+
   //converts objects into JSON objects
   var floor1 = cloneJsonObj(floor1Obj);
   var floor2 = cloneJsonObj(floor2Obj);
@@ -92,8 +108,18 @@ function populateJson(rows){
       var itemLocation = roomLocations[rows[idx].l2];
       if(itemLocation!=null){
 
-        rows[idx].x = roomLocations[rows[idx].l2][0];
-        rows[idx].y = roomLocations[rows[idx].l2][1];
+        rows[idx].x = roomLocations[rows[idx].l2][0]+scatterLocations[rows[idx].l2][0];
+        rows[idx].y = roomLocations[rows[idx].l2][1]+scatterLocations[rows[idx].l2][1];
+        scatterLocations[rows[idx].l2][0]+=spc;
+        //if x scatter location is at max
+        if(scatterLocations[rows[idx].l2][0]>spc){
+          scatterLocations[rows[idx].l2][0]= -spc;  //reset x scatter value to min
+          scatterLocations[rows[idx].l2][1]+=spc;   //update y scatter value
+          //if y scatter value is at max
+          if(scatterLocations[rows[idx].l2][1]>spc){
+            scatterLocations[rows[idx].l2][1]= -spc; //reset y scatter value to min
+          }
+        }
         rows[idx].category = roomLocations[rows[idx].l2][2];
         rows[idx].about = "";
         delete rows[idx].l2;
