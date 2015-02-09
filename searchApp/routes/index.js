@@ -31,16 +31,18 @@ router.get('/form', function(req, res) {
 			var string = JSON.stringify(data);
 			var copy = JSON.parse(string);
 			
-			fs.writeFileSync('../public/objects.json', JSON.stringify(copy));
+			//fs.writeFileSync('./public/objects.json', JSON.stringify(copy));
 			res.json(copy);			
 		});
 	}
 	else{
-
+		
+		/*
 		queryDb(urlObj.query.search,connection,function(data,err){
-				fs.writeFileSync('../public/objects.json', JSON.stringify(data));
+				fs.writeFileSync('./public/objects.json', JSON.stringify(data));
 
 		});
+		*/
 
 		res.render('index', { title: 'searchMuseum' });
 	}

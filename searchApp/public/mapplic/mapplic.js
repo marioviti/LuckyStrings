@@ -5,8 +5,11 @@
 
 (function($) {
 
-	// MAKE INSTANCE REACHABLE IN FILE FOR UPDATE
-	var GLOBALinstance;
+	function LScheckRequest (url)
+	{
+		req=url.split("search");
+		return req.length >1 ;
+	}
 
 	var Mapplic = function() {
 		var self = this;
@@ -31,9 +34,19 @@
 			zoom: true
 		};
 
-		
+		var LSajaxReq=function(url)
+		{
+			$.getJSON(url,function(data) {
+				
+					if(data!=null)
+					{
+						clearData();
+						processData(data);
+					}
+				});
+		}
 
-		var processJson= function(data)
+		var LSprocessJson= function(data)
 		{
 			processData(data);
 				self.el.removeClass('mapplic-loading');
@@ -54,10 +67,15 @@
 			self.el = el.addClass('mapplic-element mapplic-loading').height(self.o.height);
 
 			// Process JSON file
-			$.getJSON(self.o.source, processJson).fail(function() { // Failure: couldn't load JSON file, or it is invalid.
+			$.getJSON(self.o.source, LSprocessJson).fail(function() { // Failure: couldn't load JSON file, or it is invalid.
 				console.error('Couldn\'t load map data. (Make sure you are running the script through a server and not just opening the html file with your browser)');
 				alert('Data file missing or invalid!');
 			});
+
+			var url= document.URL;
+			
+			if(LScheckRequest(url))
+				LSajaxReq(url);
 
 			return self;
 		}
@@ -395,21 +413,21 @@
 				this.el = $('<div></div>').addClass('mapplic-sidebar').appendTo(self.el);
 
 				if (self.o.search) {
-					var form = $('<form></form>').addClass('mapplic-search-form').submit(function(e) {
+					var form = $('<form></form>').attr({'id':'target'}).addClass('mapplic-search-form').submit(function(e) {
 						
 						e.preventDefault();
 						return false;
 
 					}).appendTo(this.el);
 
-					var input = $('<input>').attr({'type': 'text', 'spellcheck': 'false', 'placeholder': 'Search...'}).addClass('mapplic-search-input').keyup(function(e) {
+					var input = $('<input>').attr({'type': 'text', 'id':'search-input','spellcheck': 'false', 'placeholder': 'Search...'}).addClass('mapplic-search-input').keyup(function(e) {
 
 						var keyword = $(this).val();
+						
+						//if enter is pressed
 						if (e.keyCode == 13) 
 						{
-							console.log(keyword);
-						 	s.searchQuery(keyword);
-						 	
+						 	s.LSsearchQuery(keyword);
 						}
 						else
 						{
@@ -477,23 +495,15 @@
 				$('.mapplic-list-count', category).text($('.mapplic-list-shown', category).length);
 			}
 
-			this.searchQuery = function(keyword) {
+			this.LSsearchQuery = function(keyword) {
 				
-				var ajaxurl = "/form";
+				var route = "/form";
 
-				globalQueryStrig="";
+				var url = route +"?search="+ keyword;
 
-      			history.pushState(null, null, ajaxurl+"?search="+ keyword );
+      			history.pushState(null, null, url );
 
-      			var parameters = { search: keyword };
-
-      			$.get( ajaxurl ,parameters, function(data) {
-          
-          			console.log(data);
-          			clearData();
-          			processData(data);
-				    
-        		});
+      			LSajaxReq(url);
 
 			}
 
@@ -1203,6 +1213,7 @@
 		}
 	};
 
+
 	//  Create a jQuery plugin
 	$.fn.mapplic = function(params) {
 		var len = this.length;
@@ -1210,7 +1221,8 @@
 		return this.each(function(index) {
 			var me = $(this);
 			var	key = 'mapplic' + (len > 1 ? '-' + ++index : '');
-			GLOBALinstance = (new Mapplic).init(me, params);
+			var instance = (new Mapplic).init(me, params);
+			
 		});
 	};
 })(jQuery);
