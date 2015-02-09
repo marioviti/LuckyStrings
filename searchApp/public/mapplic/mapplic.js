@@ -42,17 +42,22 @@
 					{
 						clearData();
 						processData(data);
+
+						self.el.removeClass('mapplic-loading');
+						if (self.o.zoom) addControls();
 					}
 				});
+
+
 		}
 
 		var LSprocessJson= function(data)
 		{
 			processData(data);
-				self.el.removeClass('mapplic-loading');
+			
 
 				// Controls
-				if (self.o.zoom) addControls();
+			if (self.o.zoom) addControls();
 
 		};
 
