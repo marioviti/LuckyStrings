@@ -48,13 +48,13 @@
 					}
 				});
 
-
+			
 		}
 
 		var LSprocessJson= function(data)
 		{
 			processData(data);
-			
+			self.el.removeClass('mapplic-loading');
 
 				// Controls
 			if (self.o.zoom) addControls();
