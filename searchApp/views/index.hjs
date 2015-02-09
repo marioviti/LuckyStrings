@@ -18,7 +18,7 @@
 
 
   </head>
-  <body>
+  <body onload="mobilecheck()">
 
     <div class ="navbar navbar-inverse navbar-static-top">
       <div class="container">
@@ -40,19 +40,19 @@
         </div>
     </div>
 
+  <div>
     <div class="container" >
 
       <div id="mapplic"></div>
 
     </div>
 
-    <br><br><br><br>
-
-    <div class="navbar navbar-default navbar-static-bottom">
+    <div class="navbar navbar-default" id="bottombar" style="margin-top:10px">
       <div class="container">
         <p class ="navbar-text">This site was built by Computer Science students from the University of Bristol</p>
       </div>
     </div>
+  </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

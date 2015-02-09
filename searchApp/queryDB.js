@@ -48,19 +48,19 @@ var mapplicObj={"mapwidth":"800","mapheight":"600","categories":[
 var category0Obj={    
       "id": "0",
       "title": "Ground Floor",
-      "color": "#646da8",
+      "color": "#99cccc",
       "show": "false"
     };
 var category1Obj={    
       "id": "1",
       "title": "First Floor",
-      "color": "#64ad5c",
+      "color": "#339999",
       "show": "false"
     };
 var category2Obj={    
       "id": "2",
       "title": "Second Floor",
-      "color": "#653333",
+      "color": "#336666",
       "show": "false"
     };
 
