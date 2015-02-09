@@ -19,6 +19,7 @@
 
   </head>
   <body>
+
     <div class ="navbar navbar-inverse navbar-static-top">
       <div class="container">
         <div class="navbar-brand navbar-right">| Bristol Museum and Art Gallery</div>
@@ -39,30 +40,15 @@
         </div>
     </div>
 
-    <div class = "container">
-      <div id="mapplic"></div>
-      
-<!--         <div class ="sideBar col-sm-3">
-            <div class = "navbar">
-                <div class = "container">
-                    <form class="navbar-form navbar-left" role="search">
-                          <input type="text" id ="m" class="form-control" placeholder="Search">
-                    </form>
-                </div>
-            </div>
+    <div class="container" >
 
-            <div id= "messages" class = "list-group"></div>
-        </div> -->
-<!--         <div class ="col-sm-9" id="floorplan">               
-              <img src="img/floorplansm.gif" alt="floorplan" id="floorplanimg">
-              <div  id="floorplanTags">
-                
-              </div>
-        </div> -->
-        
+      <div id="mapplic"></div>
+
     </div>
 
-    <div class="navbar navbar-default navbar-fixed-bottom">
+    <br><br><br><br>
+
+    <div class="navbar navbar-default navbar-static-bottom">
       <div class="container">
         <p class ="navbar-text">This site was built by Computer Science students from the University of Bristol</p>
       </div>
@@ -72,7 +58,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.min.js"></script>
-    <!--<script src = "/js/index.js"></script>-->
+    <script src = "/js/index.js"></script>
 
     <!-- Mapplic -->
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
