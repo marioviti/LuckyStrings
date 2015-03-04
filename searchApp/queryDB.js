@@ -8,9 +8,7 @@ var newquery =
 "FROM "+
 "OBJECTS o "+
 "INNER JOIN DISPLAY d ON d.id = o.display_id "+
-"where simple_name LIKE ";
-
-var order =
+"where simple_name LIKE ? "+
 "ORDER BY "+
 "d.l2";
 
@@ -45,19 +43,19 @@ var floor3Obj={"id":"3","name":"Second Floor","title":"Second Floor",
 var mapplicObj={"mapwidth":"800","mapheight":"600","categories":[
   ],"levels":[]};
 
-var category0Obj={    
+var category0Obj={
       "id": "0",
       "title": "Ground Floor",
       "color": "#99cccc",
       "show": "false"
     };
-var category1Obj={    
+var category1Obj={
       "id": "1",
       "title": "First Floor",
       "color": "#339999",
       "show": "false"
     };
-var category2Obj={    
+var category2Obj={
       "id": "2",
       "title": "Second Floor",
       "color": "#336666",
@@ -135,9 +133,9 @@ function populateJson(rows){
 var queryDB = function (msg, conn, callback)
 {
 
-	var localquery=newquery+'\'%'+msg+'%\''+order;
+	var localquery='%'+msg+'%';
   console.log("Query: "+localquery);
-	conn.query( localquery, function(err, rows, fields) {
+	conn.query( newquery,localquery, function(err, rows, fields) {
 
 	    if (err) callback(null,err);
       var mapplicdata = populateJson(rows);
